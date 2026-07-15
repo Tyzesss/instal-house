@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
-  <rect width="200" height="48" rx="8" fill="oklch(0.17 0.04 252)" stroke="oklch(1 0 0 / 0.15)"/>
-  <text x="100" y="30" text-anchor="middle" fill="oklch(0.85 0.02 252)" font-family="system-ui, sans-serif" font-size="14" font-weight="600">LOGO</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 56" fill="none" role="img" aria-label="Instal-House">
+  <g transform="translate(4,8)">
+    <path d="M18 4 L18 14 L8 24 L12 28 L22 18 L22 32 L26 32 L26 4 Z" fill="#E8912D" transform="rotate(-15 18 18)"/>
+    <circle cx="30" cy="34" r="5" fill="#E8912D"/>
+  </g>
+  <text x="52" y="26" fill="#F5F5F5" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="18" font-weight="700" letter-spacing="0.5">INSTAL-HOUSE</text>
+  <text x="52" y="44" fill="#E8912D" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="10" font-weight="600" letter-spacing="1.2">USŁUGI HYDRAULICZNE</text>
 </svg>

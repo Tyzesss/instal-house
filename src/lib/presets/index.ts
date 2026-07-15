@@ -1,10 +1,12 @@
 import { defaultPreset } from "./default";
+import { instalHousePreset } from "./instal-house";
 import type { SitePreset } from "./types";
 
-export type PresetId = "default";
+export type PresetId = "default" | "instal-house";
 
 export const PRESETS: Record<PresetId, SitePreset> = {
   default: defaultPreset,
+  "instal-house": instalHousePreset,
 };
 
 export const PRESET_IDS = Object.keys(PRESETS) as PresetId[];

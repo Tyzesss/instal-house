@@ -104,6 +104,8 @@ function GoogleReviewCard({
 
 export function GoogleReviewsSection({ data }: GoogleReviewsSectionProps) {
   const { rating, reviewCount, profileUrl, reviews } = data;
+  const hasReviews = reviews.length > 0;
+
   return (
     <>
       <Reveal className="mb-8 flex justify-center">
@@ -113,27 +115,43 @@ export function GoogleReviewsSection({ data }: GoogleReviewsSectionProps) {
           rel="noopener noreferrer"
           className="card-glass inline-flex items-center gap-2.5 rounded-full px-4 py-2 transition-smooth md:hover:-translate-y-0.5 md:hover:border-brand-cyan/25 md:hover:shadow-glow"
         >
-          <div className="flex items-center gap-0.5" aria-hidden>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
-            ))}
-          </div>
-          <span className="text-lg font-bold text-foreground">{rating.toFixed(1)} / 5</span>
+          {hasReviews ? (
+            <>
+              <div className="flex items-center gap-0.5" aria-hidden>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <span className="text-lg font-bold text-foreground">{rating.toFixed(1)} / 5</span>
+            </>
+          ) : (
+            <span className="text-sm font-medium text-foreground">Brak opinii w Google Maps</span>
+          )}
         </a>
       </Reveal>
 
-      <MobileCarousel
-        dark
-        items={reviews}
-        renderItem={(review, idx) => (
-          <GoogleReviewCard key={review.id} review={review} profileUrl={profileUrl} index={idx} />
-        )}
-      />
-      <div className="hidden gap-5 md:grid md:grid-cols-3">
-        {reviews.map((review, i) => (
-          <GoogleReviewCard key={review.id} review={review} profileUrl={profileUrl} index={i} />
-        ))}
-      </div>
+      {hasReviews ? (
+        <>
+          <MobileCarousel
+            dark
+            items={reviews}
+            renderItem={(review, idx) => (
+              <GoogleReviewCard key={review.id} review={review} profileUrl={profileUrl} index={idx} />
+            )}
+          />
+          <div className="hidden gap-5 md:grid md:grid-cols-3">
+            {reviews.map((review, i) => (
+              <GoogleReviewCard key={review.id} review={review} profileUrl={profileUrl} index={i} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <Reveal className="card-glass mx-auto max-w-xl rounded-xl p-8 text-center">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Ta firma nie ma jeszcze opinii w Google Maps. Bądź pierwszą osobą, która podzieli się doświadczeniem.
+          </p>
+        </Reveal>
+      )}
 
       <Reveal delay={150} className="mt-8 flex flex-wrap items-center justify-center gap-3">
         <a

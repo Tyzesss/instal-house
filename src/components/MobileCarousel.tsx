@@ -10,6 +10,10 @@ interface MobileCarouselProps<T> {
 
 export function MobileCarousel<T>({ items, renderItem, className, dark = false }: MobileCarouselProps<T>) {
   const N = items.length;
+  if (N === 0) {
+    return null;
+  }
+
   const extended = [items[N - 1], ...items, items[0]];
   const [index, setIndex] = useState(1);
   const [transition, setTransition] = useState(true);

@@ -131,13 +131,19 @@ function HeroGoogleRating({
       rel="noopener noreferrer"
       className="inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-white/12 bg-white/6 px-3 py-1.5 text-xs text-white/85 backdrop-blur-sm transition-smooth hover:border-white/25 hover:bg-white/10 sm:text-sm"
     >
-      <div className="flex shrink-0" aria-hidden>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400 sm:h-3.5 sm:w-3.5" />
-        ))}
-      </div>
-      <span className="font-semibold text-white">{rating.toFixed(1)}</span>
-      <span className="text-white/65">· {reviewCount} opinii Google</span>
+      {reviewCount > 0 ? (
+        <>
+          <div className="flex shrink-0" aria-hidden>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400 sm:h-3.5 sm:w-3.5" />
+            ))}
+          </div>
+          <span className="font-semibold text-white">{rating.toFixed(1)}</span>
+          <span className="text-white/65">· {reviewCount} opinii Google</span>
+        </>
+      ) : (
+        <span className="text-white/85">Brak opinii w Google Maps</span>
+      )}
     </a>
   );
 }
